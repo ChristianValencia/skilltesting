@@ -54,10 +54,10 @@ The result of the 4 first requirements should be the same result as the GoRest p
 | ------  |
 ```javascript
 {
-	"id": 1855,
-	"name": "Tenali Ramakrishna",
-	"email": "abcdddd.ramakrishna@15ce.com",
-	"gender": "female",
+	"id": 9,
+	"name": "Sheela Johar DCkk",
+	"email": "johar_dc_sheela@emard.co",
+	"gender": "male",
 	"status": "active",
 	"posts": [{
 		"id": 10,
