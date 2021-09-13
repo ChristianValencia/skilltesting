@@ -26,7 +26,7 @@ For querying a nested resource just have to:
 3. The service should be able to return the JSON object of all the Posts by the GET request at /posts. The HTTP response code should be 200.
 4. The service should be able to return the JSON object of all the ToDO's by the GET request at /todos. The HTTP response code should be 200.
 5. The service should be able to return in an object a user with all his posts and the latest todo (base on due_on field).
-
+6. Implement Unit Tests
 ## Running
 
 Just run the following command in a terminal window:
