@@ -8,16 +8,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 This test will use https://gorest.co.in/ which is an online REST API for testing and prototyping the endpoints to use in this test are:
 
-https://gorest.co.in/public/v1/users 
-https://gorest.co.in/public/v1/posts
-https://gorest.co.in/public/v1/todos
+- https://gorest.co.in/public/v1/users 
+- https://gorest.co.in/public/v1/posts
+- https://gorest.co.in/public/v1/todos
 
 ##### Resources by ID
 If you want to query a resource by ID just have to:
-https://gorest.co.in/public/v1/users/**ID**
+- https://gorest.co.in/public/v1/users/**ID**
 ##### Nested Resources
 For querying a nested resource just have to:
-/public/v1/users/**ID**/todos
+- /public/v1/users/**ID**/todos
 
 ## Mandatory Requirements
 
