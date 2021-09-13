@@ -25,7 +25,7 @@ For querying a nested resource just have to:
 2. The service should be able to return the JSON object of a User by ID using the GET request at /users/id. The HTTP response code should be 200.
 3. The service should be able to return the JSON object of all the Posts by the GET request at /posts. The HTTP response code should be 200.
 4. The service should be able to return the JSON object of all the ToDO's by the GET request at /todos. The HTTP response code should be 200.
-5. The service should be able to return in an object a user with all his posts and the latest todo.
+5. The service should be able to return in an object a user with all his posts and the latest todo (base on due_on field).
 
 ## Running
 
@@ -41,3 +41,38 @@ http://localhost:8080
 ```
 if the service is running properly the response must be **Greetings from Spring Boot!** 
 
+## Expected Result
+
+The result of the 4 first requirements should be the same result as the GoRest public API, and for point 5 should be:
+
+
+| Request  |
+| ------  |
+| http://localhost:8080/users/{id}/overAllInfo ||
+
+| Response  |
+| ------  |
+```javascript
+{
+	"id": 1855,
+	"name": "Tenali Ramakrishna",
+	"email": "abcdddd.ramakrishna@15ce.com",
+	"gender": "female",
+	"status": "active",
+	"posts": [{
+		"id": 10,
+		"user_id": 9,
+		"title": "Comptus sequi usus."
+	}, {
+		"id": 11,
+		"user_id": 9,
+		"title": "Aequitas defetiscor ipsa."
+	}],
+	"latestTodo": {
+		"id": 1852,
+		"title": "Phuc pham thanh 1234",
+		"due_on": "2021-09-13T13:19:10.969+05:30",
+		"status": "pending"
+	}
+} 
+```
