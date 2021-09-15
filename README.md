@@ -6,7 +6,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Resources
 
-This test will use https://gorest.co.in/ which is an online REST API for testing and prototyping the endpoints to use in this test are:
+This test will use https://gorest.co.in/ which is an online REST API for testing and prototyping, the endpoints to use in this test are:
 
 - https://gorest.co.in/public/v1/users 
 - https://gorest.co.in/public/v1/posts
