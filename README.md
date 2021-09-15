@@ -21,11 +21,11 @@ For querying a nested resource just have to:
 
 ## Mandatory Requirements
 
-1. The service should be able to return the JSON object of all the Users by the GET request at /users. The HTTP response code should be 200.
-2. The service should be able to return the JSON object of a User by ID using the GET request at /users/id. The HTTP response code should be 200.
-3. The service should be able to return the JSON object of all the Posts by the GET request at /posts. The HTTP response code should be 200.
-4. The service should be able to return the JSON object of all the ToDo's by the GET request at /todos. The HTTP response code should be 200.
-5. The service should be able to return a JSON object of an User filtered by his ID with all his posts and the latest ToDo (base on due_on field point 4). Use the GET request /users/{id}/overAllInfo
+1. The service should be able to return the JSON object of all the Users.
+2. The service should be able to return the JSON object of a User by ID.
+3. The service should be able to return the JSON object of all the Posts.
+4. The service should be able to return the JSON object of all the ToDo's.
+5. The service should be able to return in an object a User with all his Posts and the latest ToDo.
 6. Implement Unit Tests
 ## Running
 
@@ -69,7 +69,7 @@ The result of the 4 first requirements should be the same result as the GoRest p
 		"title": "Aequitas defetiscor ipsa."
 	}],
 	"latestTodo": {
-		"id": 1852,
+		"id": 1,
 		"title": "Phuc pham thanh 1234",
 		"due_on": "2021-09-13T13:19:10.969+05:30",
 		"status": "pending"
