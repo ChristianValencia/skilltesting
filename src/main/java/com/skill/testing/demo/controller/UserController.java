@@ -21,26 +21,26 @@ public class UserController {
 
   @GetMapping("/allUsers")
   public List<UserDto> getAllUsers() {
-    return service.getAllUser();
+    return service.getAllUsers();
   }
 
-  @GetMapping("/allPost")
-  public List<PostDto> getAllPost() {
-    return service.getAllPost();
+  @GetMapping("/allPosts")
+  public List<PostDto> getAllPosts() {
+    return service.getAllPosts();
   }
 
-  @GetMapping("/allTodo")
-  public List<TodoDto> getAllTodo() {
-    return service.getAllTodo();
+  @GetMapping("/allTodos")
+  public List<TodoDto> getAllTodos() {
+    return service.getAllTodos();
   }
 
-  @GetMapping("/user/{idUser}")
-  public UserDto getUserById(@PathVariable Long idUser) {
-    return service.getUserById(idUser);
+  @GetMapping("/user/{userId}")
+  public UserDto getUserById(@PathVariable Long userId) {
+    return service.getUserById(userId);
   }
 
-  @GetMapping("/fullUser/{idUser}")
-  public FullUserDto getFullUser(@PathVariable Long idUser) {
-    return service.getFullUser(idUser);
+  @GetMapping("/user/{userId}/overAllInfo")
+  public FullUserDto getFullUser(@PathVariable Long userId) {
+    return service.getFullUser(userId);
   }
 }

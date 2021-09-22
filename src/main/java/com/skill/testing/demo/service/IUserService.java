@@ -8,14 +8,14 @@ import java.util.List;
 
 public interface IUserService {
 
-  List<UserDto> getAllUser();
+  List<UserDto> getAllUsers();
 
-  UserDto getUserById(Long idUser);
+  UserDto getUserById(Long userId);
 
-  List<PostDto> getAllPost();
+  List<PostDto> getAllPosts();
 
-  List<TodoDto> getAllTodo();
+  List<TodoDto> getAllTodos();
 
-  FullUserDto getFullUser(Long idUser);
+  FullUserDto getFullUser(Long userId);
 
 }

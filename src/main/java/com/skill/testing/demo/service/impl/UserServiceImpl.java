@@ -9,6 +9,7 @@ import com.skill.testing.demo.service.dto.FullUserDto;
 import com.skill.testing.demo.service.dto.PostDto;
 import com.skill.testing.demo.service.dto.TodoDto;
 import com.skill.testing.demo.service.dto.UserDto;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,58 +19,66 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements IUserService {
 
   private IGoRestRepositoryFacade facade;
+  private final String PENDING_STATE="pending";
 
   public UserServiceImpl(IGoRestRepositoryFacade facade) {
     this.facade = facade;
   }
 
   @Override
-  public List<UserDto> getAllUser() {
-    return facade.getAllUser()
+  public List<UserDto> getAllUsers() {
+    return facade.getAllUsers()
         .stream()
         .map(user -> new UserDto(user))
         .collect(Collectors.toList());
   }
 
   @Override
-  public UserDto getUserById(Long idUser) {
-    User user = Optional.ofNullable(facade.getUserById(idUser)).orElseGet(User::new);
+  public UserDto getUserById(Long userId) {
+    User user = Optional.ofNullable(facade.getUserById(userId)).orElseGet(User::new);
     return new UserDto(user);
   }
 
   @Override
-  public List<PostDto> getAllPost() {
-    return facade.getAllPost()
+  public List<PostDto> getAllPosts() {
+    return facade.getAllPosts()
         .stream()
         .map(post -> new PostDto(post))
         .collect(Collectors.toList());
   }
 
   @Override
-  public List<TodoDto> getAllTodo() {
-    return facade.getAllTodo()
+  public List<TodoDto> getAllTodos() {
+    return facade.getAllTodos()
         .stream()
         .map(todo -> new TodoDto(todo))
         .collect(Collectors.toList());
   }
 
   @Override
-  public FullUserDto getFullUser(Long idUser) {
+  public FullUserDto getFullUser(Long userId) {
 
-    User user = Optional.ofNullable(facade.getUserById(idUser)).orElseGet(User::new);
+    User user = Optional.ofNullable(facade.getUserById(userId)).orElseGet(User::new);
 
     FullUserDto fullUserDto = new FullUserDto(user);
 
-    final Optional<List<Post>> postByUser = Optional.ofNullable(facade.getPostByUser(idUser));
+    final Optional<List<Post>> postByUser = Optional.ofNullable(facade.getPostByUser(userId));
 
     if (postByUser.isPresent()) {
       postByUser.get().stream().forEach(post -> fullUserDto.addPost(new PostDto(post)));
     }
 
-    final Optional<List<Todo>> todoByUser = Optional.ofNullable(facade.getTodoByUser(idUser));
+    final Optional<List<Todo>> todoByUser = Optional.ofNullable(facade.getTodoByUser(userId));
 
     if (todoByUser.isPresent()) {
-      todoByUser.get().stream().forEach(todo -> fullUserDto.addTodo(new TodoDto(todo)));
+
+      Optional<TodoDto> todoDto = todoByUser.get().stream()
+          .filter(todo -> todo.getStatus().equalsIgnoreCase(PENDING_STATE))
+          .sorted(Comparator.comparing(Todo::getDueOn).reversed())
+          .findFirst().map(todo -> new TodoDto(todo));
+
+      fullUserDto.setLatestTodo(todoDto.get());
+
     }
 
     return fullUserDto;

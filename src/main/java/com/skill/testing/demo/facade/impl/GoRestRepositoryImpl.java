@@ -29,43 +29,43 @@ public class GoRestRepositoryImpl implements IGoRestRepositoryFacade {
   }
 
   @Override
-  public List<User> getAllUser() {
+  public List<User> getAllUsers() {
 
     return restTemplate.getForEntity(this.buildUsersURL(), GoRestUserListResponse.class).getBody().getData();
 
   }
 
   @Override
-  public User getUserById(Long idUser) {
+  public User getUserById(Long userId) {
 
-    return restTemplate.getForEntity(this.buildUserByIdURL(idUser), GoRestUserResponse.class).getBody().getData();
+    return restTemplate.getForEntity(this.buildUserByIdURL(userId), GoRestUserResponse.class).getBody().getData();
 
   }
 
   @Override
-  public List<Post> getAllPost() {
+  public List<Post> getAllPosts() {
 
     return restTemplate.getForEntity(this.buildPostsURL(), GoRestPostResponse.class).getBody().getData();
   }
 
   @Override
-  public List<Todo> getAllTodo() {
+  public List<Todo> getAllTodos() {
     return restTemplate.getForEntity(this.buildTodosURL(), GoRestTodoResponse.class).getBody().getData();
   }
 
   @Override
-  public List<Post> getPostByUser(Long idUser) {
+  public List<Post> getPostByUser(Long userId) {
     try {
-      return restTemplate.getForEntity(this.buildPostByUserURL(idUser), GoRestPostResponse.class).getBody().getData();
+      return restTemplate.getForEntity(this.buildPostByUserURL(userId), GoRestPostResponse.class).getBody().getData();
     } catch (Exception e) {
       return null;
     }
   }
 
   @Override
-  public List<Todo> getTodoByUser(Long idUser) {
+  public List<Todo> getTodoByUser(Long userId) {
     try {
-      return restTemplate.getForEntity(this.buildTodosByUserURL(idUser), GoRestTodoResponse.class).getBody().getData();
+      return restTemplate.getForEntity(this.buildTodosByUserURL(userId), GoRestTodoResponse.class).getBody().getData();
     } catch (Exception e) {
       return null;
     }

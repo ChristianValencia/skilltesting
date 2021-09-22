@@ -7,16 +7,16 @@ import java.util.List;
 
 public interface IGoRestRepositoryFacade {
 
-  List<User> getAllUser();
+  List<User> getAllUsers();
 
-  User getUserById(Long idUser);
+  User getUserById(Long userId);
 
-  List<Post> getAllPost();
+  List<Post> getAllPosts();
 
-  List<Todo> getAllTodo();
+  List<Todo> getAllTodos();
 
-  List<Post> getPostByUser(Long idUser);
+  List<Post> getPostByUser(Long userId);
 
-  List<Todo> getTodoByUser(Long idUser);
+  List<Todo> getTodoByUser(Long userId);
 
 }
