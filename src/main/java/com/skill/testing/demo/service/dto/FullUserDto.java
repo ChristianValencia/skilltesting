@@ -16,11 +16,9 @@ public class FullUserDto extends UserDto {
   }
 
 
-
   public void addPost(PostDto postDto) {
     this.posts.add(postDto);
   }
-
 
 
   public List<PostDto> getPosts() {

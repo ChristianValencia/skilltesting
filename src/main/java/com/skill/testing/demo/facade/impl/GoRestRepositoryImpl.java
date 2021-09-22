@@ -19,9 +19,9 @@ public class GoRestRepositoryImpl implements IGoRestRepositoryFacade {
   private RestTemplate restTemplate;
 
   private final String GO_REST_URL = "https://gorest.co.in/public/v1";
-  private final String USERS = "/users";
-  private final String POSTS = "/posts";
-  private final String TODOS = "/todos";
+  private final String USERS = "/users/";
+  private final String POSTS = "/posts/";
+  private final String TODOS = "/todos/";
 
 
   public GoRestRepositoryImpl(RestTemplateBuilder builder) {
@@ -75,6 +75,18 @@ public class GoRestRepositoryImpl implements IGoRestRepositoryFacade {
     return GO_REST_URL.concat(USERS);
   }
 
+  private String buildUserByIdURL(Long id) {
+    return buildUsersURL().concat(id.toString());
+  }
+
+  private String buildPostByUserURL(Long id) {
+    return buildUserByIdURL(id).concat(POSTS);
+  }
+
+  private String buildTodosByUserURL(Long id) {
+    return buildUserByIdURL(id).concat(TODOS);
+  }
+
   private String buildPostsURL() {
     return GO_REST_URL.concat(POSTS);
   }
@@ -82,18 +94,5 @@ public class GoRestRepositoryImpl implements IGoRestRepositoryFacade {
   private String buildTodosURL() {
     return GO_REST_URL.concat(TODOS);
   }
-
-  private String buildUserByIdURL(Long id) {
-    return GO_REST_URL.concat(USERS).concat("/").concat(id.toString());
-  }
-
-  private String buildPostByUserURL(Long id) {
-    return GO_REST_URL.concat(USERS).concat("/").concat(id.toString()).concat(POSTS);
-  }
-
-  private String buildTodosByUserURL(Long id) {
-    return GO_REST_URL.concat(USERS).concat("/").concat(id.toString()).concat(TODOS);
-  }
-
 
 }

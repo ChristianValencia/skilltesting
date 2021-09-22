@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements IUserService {
 
   private IGoRestRepositoryFacade facade;
-  private final String PENDING_STATE="pending";
+  private final String PENDING_STATE = "pending";
 
   public UserServiceImpl(IGoRestRepositoryFacade facade) {
     this.facade = facade;
